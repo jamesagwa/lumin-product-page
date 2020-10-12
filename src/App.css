@@ -20,12 +20,6 @@
   }
 }
 
-.container {
-  display: flex;
-  width: 80%;
-  margin: 0 auto;
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -48,4 +42,23 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* utils */
+.container {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.mt-small {
+  margin-top: 1rem;
+}
+
+.mt-1 {
+  margin-top: 2.5rem;
+}
+
+.mt-2 {
+  margin-top: 5rem;
 }

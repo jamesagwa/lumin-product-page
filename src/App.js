@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
-import { Header } from "./components";
+import { Header, ProductGrid } from "./components";
 
 function App() {
   return (
     <div className="App">
       <Header />
+      <ProductGrid />
     </div>
   );
 }
