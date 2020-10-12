@@ -1,0 +1,38 @@
+.navbar {
+  background-color: white;
+  border-bottom: 1px solid #e3e6e3;
+  box-shadow: 0 1px 5px 0 rgba(204, 204, 204, 0.5);
+  height: 60px;
+}
+
+.nav-list > li {
+  line-height: 4;
+  display: inline-block;
+  list-style: none;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.logo {
+  flex: 2;
+}
+
+.logo > h1 {
+  line-height: 2;
+  letter-spacing: 20px;
+  font-weight: 300;
+}
+
+.nav {
+  flex: 5;
+  display: flex;
+}
+
+.left-nav {
+  flex: 6;
+  text-align: left;
+}
+
+.right-nav {
+  flex: 2;
+}
