@@ -1,0 +1,11 @@
+.offcanvas-container {
+  width: 0;
+  height: 100%;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  background-color: white;
+  transition: 0.5s;
+}

@@ -1,36 +1,32 @@
 import React from "react";
+import { useQuery } from "@apollo/client";
 
+import { GET_PRODUCTS } from "../../gql";
 import "./style.css";
 
 export function ProductGrid() {
+  const { loading, error, data } = useQuery(GET_PRODUCTS);
+
+  if (loading) {
+    return <div>loading</div>;
+  }
+
+  const { products } = data;
+
   return (
     <section className="p-grid">
       <div className="container">
         <div className="grid-row">
-          <div className="grid-column col-1">
-            Age management Collection
-            <p>From $48.00</p>
-          </div>
-          <div className="grid-column col-2">
-            Classic maintenance Collection
-            <p>From $48.00</p>
-          </div>
-          <div className="grid-column col-3">
-            Collection Trio Collection
-            <p>From $48.00</p>
-          </div>
-          <div className="grid-column col-4">
-            The Complete Collection
-            <p>From $48.00</p>
-          </div>
-          <div className="grid-column col-5">
-            ANo-nonsense Charcoal Cleanser
-            <p>From $48.00</p>
-          </div>
-          <div className="grid-column col-6">
-            Premium-Grade Moisturizing Balm
-            <p>From $48.00</p>
-          </div>
+          {products.map((product) => (
+            <div className="grid-column col-1" key={product.id}>
+              <div>
+                <img src={product.image_url} width="300px" alt="" />
+              </div>
+              {product.title}
+              <p>From ${product.price}</p>
+              <button>Add to Cart</button>
+            </div>
+          ))}
         </div>
       </div>
     </section>
