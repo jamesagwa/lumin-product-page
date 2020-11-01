@@ -1,1 +1,2 @@
-export const GQL_ENDPOINT = "https://pangaea-interviews.now.sh/api/graphql";
+export { GQL_ENDPOINT } from './api'
+export * from './context' 

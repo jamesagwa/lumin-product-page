@@ -1,5 +1,5 @@
 .offcanvas-container {
-  width: 0;
+  width: 50%;
   height: 100%;
   padding: 0;
   position: fixed;
@@ -8,4 +8,25 @@
   z-index: 100;
   background-color: white;
   transition: 0.5s;
+}
+
+.cart-item__wrapper {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.cart-item__remove-icon {
+  position: absolute;
+  top: 2;
+  right: 2;
+}
+.cart-item__title {
+  flex: 3;
+}
+.cart-item__price {
+  flex: 2;
+}
+.cart-item__img {
+  flex: 1;
 }

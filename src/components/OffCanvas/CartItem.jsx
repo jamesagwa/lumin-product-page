@@ -3,29 +3,28 @@ import PropTypes from "prop-types";
 
 import { QuantityCounter } from "./QuantityCounter";
 
-export function CartItem({ description, maxQuantity, price, itemImageUrl }) {
+export function CartItem({ title, price, image_url, quantity }) {
+  const item = { title, price, image_url, quantity }
   return (
-    <div>
-      <div className="remove-item">x</div>
-      <div className="description">
-        <h3>{description}</h3>
+    <div className="cart-item__wrapper">
+      <div className="cart-item__remove-icon">x</div>
+      <div className="cart-item__title">
+        <p>{title}</p>
+        <div>
+          <QuantityCounter item={item} />
+        </div>
       </div>
-      <div className="item-details">
-        <div>
-          <QuantityCounter maxQuantity={5} />
-        </div>
-        <div>${price}</div>
-        <div>
-          <img src={itemImageUrl} alt="" />
-        </div>
+      <div className="cart-item__price">${quantity * price}</div>
+      <div className="cart-item__img">
+          <img src={image_url} alt="" />
       </div>
     </div>
   );
 }
 
 CartItem.propTypes = {
-  description: PropTypes.string,
+  title: PropTypes.string,
   maxQuantity: PropTypes.number,
   price: PropTypes.number,
-  itemImageUrl: PropTypes.string,
+  image_url: PropTypes.string,
 };

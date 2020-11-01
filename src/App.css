@@ -3,6 +3,11 @@
   margin: 0;
   padding: 0;
 }
+
+img {
+  width: 100%;
+  height: 100%;
+}
 /* End: reset */
 
 .App {
@@ -61,4 +66,17 @@
 
 .mt-2 {
   margin-top: 5rem;
+}
+
+.pr-1 {
+  margin-right: 30px;
+}
+
+.btn {
+  border: none;
+  padding: 20px 20px;
+  color: whitesmoke;
+  background-color: #282c34;
+  width: 80%;
+  cursor: pointer;
 }

@@ -1,8 +1,11 @@
 import React from "react";
 
+import { useAppContext } from '../../hooks'
 import "./style.css";
 
 export function NavBar() {
+  const { showCart } = useAppContext()
+
   return (
     <div className="navbar">
       <div className="container">
@@ -16,7 +19,7 @@ export function NavBar() {
           </ul>
           <ul className="nav-list right-nav">
             <li>Account</li>
-            <li>Cart</li>
+            <li style={{ cursor: 'pointer'}} onClick={showCart}>Cart</li>
           </ul>
         </nav>
       </div>

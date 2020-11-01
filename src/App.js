@@ -1,13 +1,18 @@
 import React from "react";
-import "./App.css";
+
 import { Header, ProductGrid, OffCanvas } from "./components";
+import { AppProvider } from './config'
+import "./App.css";
+
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <ProductGrid />
-      <OffCanvas />
+      <AppProvider>
+        <Header />
+        <ProductGrid />
+        <OffCanvas />
+      </AppProvider>
     </div>
   );
 }
