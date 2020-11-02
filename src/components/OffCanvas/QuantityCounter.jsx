@@ -7,7 +7,8 @@ const styles = {
     display:'flex',
   },
   signs: {
-    flex: 1
+    flex: 1,
+    cursor: 'pointer'
   },
   count: {
     flex: 2
@@ -26,10 +27,12 @@ export function QuantityCounter({ item }) {
   }
 
   return (
-    <div style={styles.wrapper}>
-      <div style={styles.signs} onClick={decrease}>-</div>
-      <div style={styles.count}>{item.quantity}</div>
-      <div style={styles.signs} onClick={increase}>+</div>
+    <div role="group">
+      <div style={styles.wrapper} role="spinbutton" aria-valuemin="0" aria-valuenow={item.quantity} aria-valuemax={item.quantity**2} >
+        <div style={styles.signs} onClick={decrease} aria-label="decrease quantity" tabIndex="-1">-</div>
+        <div style={styles.count} >{item.quantity}</div>
+        <div style={styles.signs} onClick={increase} aria-label="increase quantity" tabIndex="-1">+</div>
+      </div>
     </div>
   );
 }
