@@ -92,7 +92,7 @@ export function useAppContext() {
       items = [...items, item]
       setState({...state, showCart: state.showCart ? state.showCart: !state.showCart, items})
   }
-
+  
   const showCart = () => setState({...state, showCart: !state.showCart})
 
   return {
@@ -102,6 +102,6 @@ export function useAppContext() {
     showCart,
     increaseQuantity,
     decreaseQuantity,
-    currencyChanged
+    currencyChanged,
   };
 }

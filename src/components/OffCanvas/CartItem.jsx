@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { QuantityCounter } from "./QuantityCounter";
 
-export function CartItem({ title, price, image_url, quantity }) {
+export function CartItem({ title, price, image_url, quantity, currency }) {
   const item = { title, price, image_url, quantity }
   return (
     <div className="cart-item__wrapper">
@@ -14,7 +14,7 @@ export function CartItem({ title, price, image_url, quantity }) {
           <QuantityCounter item={item} />
         </div>
       </div>
-      <div className="cart-item__price">${quantity * price}</div>
+      <div className="cart-item__price">{`${currency} ${quantity * price}`}</div>
       <div className="cart-item__img">
           <img src={image_url} alt="" />
       </div>

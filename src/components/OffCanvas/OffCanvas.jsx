@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery, useLazyQuery } from "@apollo/client";
 
 import { GET_CURRENCIES, GET_PRODUCTS } from "../../gql";
@@ -10,10 +10,13 @@ import "./style.css";
 export function OffCanvas() {
   const { data } = useQuery(GET_CURRENCIES)
   const [getProducts, { loading, data:allProducts }] = useLazyQuery(GET_PRODUCTS);
-  const { state, showCart, currencyChanged } = useAppContext()
-  const totalCost = state.items.reduce((acc, item) => {
-    return acc += item.price
+  const { state, showCart, currencyChanged} = useAppContext()
+  const [currency, setCurrency] = useState('USD')
+
+  const getTotalCost = items => items.reduce((acc, item) => {
+    return acc += (item.price * item.quantity)
   },0)
+  
 
   useEffect(() => {
     if (allProducts) {
@@ -28,7 +31,12 @@ export function OffCanvas() {
           <p><span className="pr-1" style={{cursor: 'pointer'}} onClick={showCart}>&larr;</span> YOUR CART</p>
         </div>
         <div>
-          <select name="currency" id="" className="currency" onChange={(evt) => getProducts({ variables: { currency: evt.target.value}})}>
+          <select name="currency" className="currency" onChange={(evt) => {
+            const {value} = evt.target
+            setCurrency(value)
+            getProducts({ variables: { currency: value}})
+          }
+            }>
             <option selected defaultValue disabled>
               USD
             </option>
@@ -40,7 +48,7 @@ export function OffCanvas() {
           </select>
           {
             state.items.length >= 1 ? state.items.map(item => (
-              <CartItem {...item} key={item.id} />
+              <CartItem currency={currency} {...item} key={item.id} />
             )) : (
               <p>No item in your cart yet.</p>
             )
@@ -48,7 +56,7 @@ export function OffCanvas() {
           <hr />
           <div className="price-total">
             <div>Subtotal</div>
-            <div>${totalCost}</div>
+            <div>{`${currency} ${getTotalCost(state.items)}`}</div>
           </div>
           <div className="button-group">
             <button>MAKE THIS A SUBSCRIPTION (SAVE 20%)</button>
