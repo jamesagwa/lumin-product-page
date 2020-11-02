@@ -37,7 +37,9 @@ exports[`Header Component should render correctly 1`] = `
             <li>
               Account
             </li>
-            <li>
+            <li
+              style="cursor: pointer;"
+            >
               Cart
             </li>
           </ul>

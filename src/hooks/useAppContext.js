@@ -18,7 +18,9 @@ export function useAppContext() {
   
   //   helper
   const hasItemWithId = (items, itemID) => {
-      return items.find(item => item.id === itemID)
+      if (items && items.length >=1 ) {
+          return items.find(item => item.id === itemID)
+      }
   }
 
   // extended methods
@@ -63,7 +65,19 @@ export function useAppContext() {
     })
   }
 
-  const currencyChanged = (currency) => {}
+  const currencyChanged = ({ products}) => {
+      let {items} = state
+      const newItems = items.map(item => {
+          const anItem = hasItemWithId(products, item.id)
+          item.price = anItem.price
+          return item
+      })
+
+      setState(prevState => ({
+          ...prevState,
+          items: newItems
+      }))
+  }
 
   const addItem  = item => {
       let { items } = state
@@ -76,7 +90,7 @@ export function useAppContext() {
       }
       
       items = [...items, item]
-      setState({...state, showCart: !state.showCart, items})
+      setState({...state, showCart: state.showCart ? state.showCart: !state.showCart, items})
   }
 
   const showCart = () => setState({...state, showCart: !state.showCart})

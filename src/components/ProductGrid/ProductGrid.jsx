@@ -6,7 +6,11 @@ import { useAppContext } from '../../hooks'
 import "./style.css";
 
 export function ProductGrid() {
-  const { loading, error, data } = useQuery(GET_PRODUCTS);
+  const { loading, error, data } = useQuery(GET_PRODUCTS, {
+    variables: {
+      currency: 'USD'
+    }
+  });
   const { addItem } = useAppContext()
 
   if (loading) {

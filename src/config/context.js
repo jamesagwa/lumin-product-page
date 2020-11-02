@@ -2,7 +2,7 @@ import React, { useState, useMemo } from "react";
 
 export const AppContext = React.createContext();
 
-const initialState = {
+export const initialState = {
     showCart: false,
     items: [],
     currency: 'USD'
